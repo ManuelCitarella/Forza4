@@ -1,0 +1,912 @@
+- FUNZIONI PER FORZA 4 -
+- TIPI DI DATO : 
+		Posizione, tipo di dato che indica le righe e le colonne nel campo da gioco	
+		Campo, tipo di dato contenente i valori del campo da gioco		
+		Impostazioni, tipo di dato che contiene le impostazioni principali del gioco, come 
+			      le righe, le colonne, i giocatori, le pedine di ciascun giocatore,
+			      le impostazioni fisse come campoX e campoY ed infine il valore
+			      della CPU.
+				
+
+- Main :
+	OUTPUT : Funzioni che permettono di giocare a Forza4 
+	PROCEDIMENTO : 
+	Assegnare a ImpostazioniGioco il valore di ScritturaImpostazioniDefault(ImpostazioniGioco)
+	Visualizzare Titolo()
+	Assegnare a ImpostazioniGioco il valore di Menu(ImpostazioniGioco)
+	Assegnare a colonne il valore di LetturaColonne(ImpostazioniGioco)
+	Assegnare a righe il valore di LetturaRighe(ImpostazioniGioco)
+	StampaCampo(ImpostazioniGioco,Righe,Colonne)
+	Assegnare a Vittoria il valore di Gioco(Tabella,ImpostazioniGioco)
+	Visualizzare MessaggioFinale(Vittoria)
+	FINE
+
+- Algoritmo per Controllo File -
+	INPUT : File, file di impostazioni del gioco di cui controllare se è NULL o meno
+	OUTPUT : Esito, Valore booleano che indica con 1 se il file non è NULL, e con 
+		  0 se invece lo è
+	
+	PROCEDIMENTO :
+	Assegnare ad Esito il valore 0
+	Se(File != NULL)
+		Allora Assegnare a esito il valore 1
+	FINE SE
+	Visualizzare Esito
+	FINE
+
+- Algoritmo per Scrittura Righe : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere il valore N delle righe
+		Righe, valore intero >=4 che indica la dimensione delle righe del campo
+	OUTPUT : Impostazioni, Dato contentente la dimensione N delle righe
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in Righe il valore di N 	
+		       FINE
+
+- Algoritmo per Lettura Righe : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il valore delle righe contenuto
+			      all'interno
+	OUTPUT : Righe, dimensione N delle righe
+	PROCEDIMENTO : Assegnare a Righe il valore di Impostazioni in Righe
+		       FINE
+
+- Algoritmo per Scrittura Valore Campo : 
+	INPUT : Tabella, tipo di dato campo dal quale andiamo a inserire i valori presneti all'interno
+		Riga, tipo di dato posizione,intero >=4 e <=7 che indica in che riga
+			vogliamo scrivere il valore
+		Colonna, tipo di dato posizione,intero >=4 e <=7 che indica in che colonna
+			vogliamo scrivere il valore
+		Pedina, intero >=2 o <=4 che vogliamo scrivere all'interno di tabella
+	OUTPUT : Tabella, contenente il valore che volevamo scrivere
+	PROCEDIMENTO : Assegnare a Tabella in posizione(riga,colonna) il valore di pedina 	
+		       FINE
+
+- Algoritmo per Lettura Valore Campo : 
+	INPUT : Tabella, tipo di dato campo dal quale andiamo a prelevare i valori presenti all'interno
+		Riga, tipo di dato posizione,intero >=4 e <=7 che indica in che riga
+			vogliamo leggere il valore
+		Colonna, tipo di dato posizione,intero >=4 e <=7 che indica in che colonna
+			vogliamo leggere il valore
+	OUTPUT :Valore, valore intero >=0, presente in tabella che volevamo leggere 
+	PROCEDIMENTO : Assegnare a Valore il valore di Tabella in posizione(riga,colonna)
+		       FINE	
+
+
+- Algoritmo per Scrittura Colonne : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere il valore M delle colonne
+		Colonne, valore intero >=4 che indica la dimensione delle colonne del campo
+	OUTPUT : Impostazioni, Dato contentente la dimensione M delle righe
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in Colonne il valore di M 
+		       FINE
+	
+-Algoritmo per Lettura Colonne : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il valore delle colonne contenuto
+			      all'interno
+	OUTPUT : Colonne, dimensione M delle righe
+	PROCEDIMENTO : Assegnare a Colonne il valore di Impostazioni in Colonne
+		       FINE
+
+- Algoritmo per Scrittura Giocatori : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere il numero di giocatori G presenti
+		Giocatori, valore intero >=2 e <=4 che indica quante persone giocano
+	OUTPUT : Impostazioni, Dato contentente il numero G di giocatori
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in Giocatori il valore di G 
+			FINE
+
+-Algoritmo per Lettura Giocatori : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il numero dei giocatori contenuto
+			      all'interno
+	OUTPUT : Giocatori, numero intero G di giocatori presenti
+	PROCEDIMENTO : Assegnare a Giocatori il valore di Impostazioni in Giocatori
+		       FINE
+
+- Algoritmo per Scrittura Pedina: 
+	INPUT : Impostazioni, tipo di dato in cui scrivere il numero di giocatori G presenti
+		Pedina, valore intero >=2 e <=4 che vogliamo scrivere in Impostazioni
+		i, valore intero >=0 che indica in che posizione vogliamo scrivere la pedina
+	OUTPUT : Impostazioni, Dato contentente la pedina al suo interno
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in pedine + i il valore di Pedina 
+			FINE
+
+-Algoritmo per Lettura Pedina : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il numero dei giocatori contenuto
+			      all'interno
+		i, valore intero >=0 che indica in che posizione vogliamo leggere la pedina
+	OUTPUT : Pedina, valore intero >=2 e <=4 che ci viene restituito 
+	PROCEDIMENTO : Assegnare a Pedina il valore di Impostazioni in pedine+i
+		       FINE
+
+- Algoritmo per Scrittura CoordinataX : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere la coordinata X dalla quale iniziare a 
+			      stampare il campo
+		x, valore intero >=0 che indica in che punto iniziare a stampare il campo
+	OUTPUT : Impostazioni, Dato contentente la coordinata X di x 
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in campoX il valore di x
+		       FINE
+
+-Algoritmo per Lettura CoordinataX : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il numero della coordinata X contenuto
+			      all'interno
+	OUTPUT : x, numero intero X presente all'interno del dato
+	PROCEDIMENTO : Assegnare a x il valore di Impostazioni in campoX
+		       FINE
+
+- Algoritmo per Scrittura CoordinataY : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere la coordinata Y dalla quale iniziare a 
+			      stampare il campo
+		y, valore intero >=0 che indica in che punto iniziare a stampare il campo
+	OUTPUT : Impostazioni, Dato contentente la coordinata Y di y 
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in campoY il valore di y
+		       FINE
+
+-Algoritmo per Lettura CoordinataY : 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il numero della coordinata Y contenuto
+			      all'interno
+	OUTPUT : y, numero intero Y presente all'interno del dato che indica la coordinata
+	PROCEDIMENTO : Assegnare a y il valore di Impostazioni in campoY
+		       FINE
+
+- Algoritmo per Scrittura Valore CPU : 
+	INPUT : Impostazioni, tipo di dato in cui scrivere il valore che avrà la CPU nel gioco
+		i, valore intero >=0 e <=1 che indica se la CPU giocherà o meno
+	OUTPUT : i, valore intero contentente il valore che verrà assegnato alla CPU
+	
+	PROCEDIMENTO : Assegnare a Impostazioni in CPU il valore di i 
+		       FINE
+
+-Algoritmo per Lettura Valore CPU: 
+	INPUT : Impostazioni, tipo di dato nel quale leggere il valore della CPU
+	OUTPUT : i, numero intero >=0 contenente il valore
+	PROCEDIMENTO : Assegnare a i il valore di Impostazioni in CPU
+
+- Algoritmo per Lettura Valore File:
+	-INPUT : File, file di impostazioni dal quale leggere un valore
+		 Riga, riga sulla quale è presente il dato che ci interessa
+	-OUTPUT : Valore, valore letto dal file sulla riga selezionata
+	-DATI DI LAVORO : i, indice per il ciclo
+	-PROCEDIMENTO :
+	Assegnare a i il valore 0
+	Mentre(i<=Riga)
+		Assegnare a valore il valore letto in posizione i di file
+		Assegnare a i il valore i+1
+	FINE MENTRE
+	FINE
+
+- Algoritmo per Scrittura Impostazioni di Default
+	-INPUT : File, file di impostazioni del gioco dal quale prelevare le impostazioni
+		       di default
+	-OUTPUT : Impostazioni, tipo di dato contenente tutte le impostazioni di default
+	-DATI DI LAVORO : Righe, righe di default (6)
+			  Colonne, colonne di default (7)
+			  Giocatori, giocatori in totale (2)
+			  Pedina1, pedina del primo giocatore (1)
+			  Pedina 2, pedina del secondo Giocatore(2)
+			  CoordinataX, colonna dalla quale iniziare a stampare(30)
+			  CoordinataY, riga dalla quale iniziare a stampare(3)
+			  CPU, valore che indica se il bot gioca o meno(0)
+	-PROCEDIMENTO : 
+	Assegnare a File il valore di fopen("C:\\Users\\Ivan\\ProgettiEclipse\\Prova1\\impostazioni.f4","r")
+	Assegnare a i il valore 0
+	Assegnare a Impostazioni in righe il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in colonne il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in giocatori il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in pedina1 il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in pedina2 il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in campoX il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in campoY il valore di LetturaValoreFile(File,i)
+	Assegnare a i il valore i+1
+	Assegnare a Impostazioni in CPU il valore di LetturaValoreFile(File,i)
+	Assegnare a File il valore di fclose(File)
+	
+
+
+-Algoritmo per Mostra Impostazioni :
+	INPUT : Impostazioni, tipo di dato contenente tutte le informazioni necessarie da far
+			      visualizzare all'utente
+	OUTPUT : 
+	PROCEDIMENTO :
+
+- Algoritmo per Impostazione Valore CPU :
+	INPUT : Impostazioni, tipo di dato su cui verrà scritto il nuovo valore che avrà
+			      la CPU nel gioco, attivandola
+	OUTPUT : Impostazioni, tipo di dato in cui è stato scritto il nuovo valore intero 1
+	DATI DI LAVORO : i, variabile contenente il valore intero 1
+	PROCEDIMENTO : Assegnare a Impostazioni il valore di ScritturaValoreCPU(Impostazioni,i)
+		       FINE
+- Algoritmo per Controllo Righe: 
+	INPUT : Righe, valore intero >=4 e <=7 che verrà controllato
+	OUTPUT : Esito, valore intero al quale verrà assegnato 1 se i vincoli sono stati rispettati
+			assegnerà invece 0 se non lo sono stati
+	PROCEDIMENTO : Assegnare a Esito il valore 0
+		       Se(Righe<=4 OR Righe>7)
+			 Allora Visualizzare Errore
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+			FINE
+
+- Algoritmo per Acquisizione Righe :
+	INPUT : Impostazioni, tipo di dato su cui verrà scritto il nuovo valore N che
+			      avranno le righe
+		Righe, valore intero >=4 e <=7 che verrà scritto
+	OUTPUT : Impostazioni, tipo di dato in cui è stato scritto il nuovo valore N delle righe
+	DATI DI LAVORO : Esito, valore intero che indicherà l'esito del controllo del valore N
+	PROCEDIMENTO : Esegui
+		       		Assegnare a Esito il valore di ControlloRighe(Righe)
+		       FINCHE'(Esito==0)
+		       FINE CICLO
+		       Assegnare a Impostazioni il valore di ScritturaRighe(Impostazioni,Righe)
+		       FINE
+
+- Algoritmo per Scrittura Impostazioni Utente :
+	INPUT : Impostazioni, tipo di dato sul quale verranno scritte le impostazioni che l'utente
+			      vorrà cambiare
+	OUTPUT : Impostazioni, dato contenente le nuove impostazioni scelte dall'utente
+	PROCEDIMENTO : Assegnare a Impostazioni il valore di AcquisizioneRighe(Impostazioni)
+		       Assegnare a Impostazioni il valore di AcquisizioneColonne(Impostazioni)	
+		       Assegnare a Impostazioni il valore di AcquisizioneGiocatori(Impostazioni)
+		       Assegnare a Impostazioni il valore di AcquisizionePedine(Impostazioni)
+	
+- Algoritmo per MossaCPU :
+	INPUT : Tabella, tipo di dato campo con il quale verificare la situazione attuale del campo
+		Impostazioni, tipo di dato contenente le informazioni necessarie quali righe e colonne
+			      del campo da gioco
+		i, valore intero >=1 o <=2 che indica la pedina della CPU
+	OUTPUT : Vittoria, valore intero <=1 che indica se la partita è stata vinta dal giocatore
+			   CPU o meno
+	DATI DI LAVORO : Riga, numero intero >=4 e <=7 che indica la riga nella quale verrà inserita
+				la pedina della CPU, restituirà -1 se la riga è piena, facendo
+				perdere il turno alla CPU
+			 Colonna, numero intero >=4 e <=15 che indica la colonna scelta dalla CPU
+				  nella quale inserire la propria pedina
+	PROCEDIMENTO : Assegnare a Vittoria il valore 0
+		       Assegnare a pedina il valore di LetturaPedina(Impostazioni,i)
+		       Assegnare a Riga il valore di LetturaRighe(Impostazioni)
+		       Assegnare a Colonna il valore di SceltaColonnaCPU(Tabella,Impostazioni,riga-1,i+1,pedina)
+		       Assegnare a Riga il valore di InserisciPedina(Tabella,Riga-1,Colonna,pedina)
+		       SE(Riga==-1)
+			Allora Visualizzare Errore
+			Altrimenti Assegnare a Vittoria il valore di ControlloVittoria(Impostazioni,Riga,Colonna,Tabella,pedina)
+		       FINE SE
+		      FINE
+- Algoritmo per Controllo Colonne: 
+	INPUT : Colonne, valore intero >=4 e <=15 che verrà controllato
+	OUTPUT : Esito, valore intero al quale verrà assegnato 1 se i vincoli sono stati rispettati
+			assegnerà invece 0 se non lo sono stati
+	PROCEDIMENTO : Assegnare a Esito il valore 0
+		       Se(Righe<=4 OR Righe>15)
+			 Allora Visualizzare Errore
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+			FINE
+
+- Algoritmo per Acquisizione Colonne :
+	INPUT : Impostazioni, tipo di dato su cui verrà scritto il nuovo valore M che
+			      avranno le colonne
+		Righe, valore intero >=4 e <=15 che verrà scritto
+	OUTPUT : Impostazioni, tipo di dato in cui è stato scritto il nuovo valore M delle righe
+	DATI DI LAVORO : Esito, valore intero che indicherà l'esito del controllo del valore M
+	PROCEDIMENTO : Esegui
+		       		Assegnare a Esito il valore di ControlloColonne(Colonne)
+		       FINCHE'(Esito==0)
+		       FINE CICLO
+		       Assegnare a Impostazioni il valore di ScritturaColonne(Impostazioni,Colonne)
+		       FINE
+
+- Algoritmo per Controllo Giocatori: 
+	INPUT : Giocatori, valore intero >=2 e <=4 che verrà controllato
+	OUTPUT : Esito, valore intero al quale verrà assegnato 1 se i vincoli sono stati rispettati
+			assegnerà invece 0 se non lo sono stati
+	PROCEDIMENTO : Assegnare a Esito il valore 0
+		       Se(Righe<2 OR Righe>4)
+			 Allora Visualizzare Errore
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+		       FINE
+
+- Algoritmo per Acquisizione Giocatori :
+	INPUT : Impostazioni, tipo di dato su cui verrà scritto il nuovo valore G che
+			      avrà il numero di giocatori
+		Giocatori, valore intero >=2 e <=4 che verrà scritto
+	OUTPUT : Impostazioni, tipo di dato in cui è stato scritto il nuovo valore G dei giocatori
+	DATI DI LAVORO : Esito, valore intero che indicherà l'esito del controllo del valore M
+	PROCEDIMENTO : Esegui
+		       		Assegnare a Esito il valore di ControlloGiocatori(Giocatori)
+		       FINCHE'(Esito==0)
+		       FINE CICLO
+		       Assegnare a Impostazioni il valore di ScritturaGiocatori(Impostazioni,Giocatori)
+		       FINE
+
+- Algoritmo per Acquisizione Pedine : 
+	INPUT : Impostazioni, tipo di dato su cui verranno scritte le pedine
+	OUTPUT : Impostazioni, dato contenenente le pedine dei giocatori
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 giocatori, numero di giocatori presenti nel gioco
+	PROCEDIMENTO :  Assegnare a giocatori il valore di LetturaGiocatori(Impostazioni)
+			Assegnare a i il valore 0
+			MENTRE(i<giocatori)
+			 Assegnare a Impostazioni il valore di ScritturaPedina(Impostazioni,i,i+1)
+			 Assegnare a i il valore di i +1
+			FINE MENTRE
+			FINE
+			
+
+- Algoritmo per Controllo Scelta Menù :
+	INPUT : Scelta, valore intero >=0 che indica la scelta effettuata nel menù dall'utente
+	OUTPUT : Esito, valore intero >=0 e <=1 che indicherà l'esito del controllo della Scelta
+	PROCEDIMENTO : Assegnare a esito il valore 0
+			Se(Scelta!=1 && Scelta!=2 && Scelta!=3)
+		       	 Allora Visualizzare Esito
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+		       FINE
+- Algoritmo per Menù :
+	INPUT : Impostazioni, tipo di dato sul quale verranno effettuate le operazioni previste
+			      in base alla scelta
+	OUTPUT: Scelta, valore intero >=0 che indicherà la scelta effettuata dall'tutente
+	DATI DI LAVORO : Esito, valore intero >=0 o <=1 che indicherà l'esito del controllo
+	PROCEDIMENTO : Esegui
+			Assegnare a Esito il valore di ControlloSceltaMenù(scelta)
+			 Se(Scelta==2)
+			 Allora Assegnare a Impostazioni il valore di RichiestaImpostazioni(Impostazioni)
+			 FINE SE
+			  Se(Scelta==3)
+			   Allora Assegnare a Impostazioni il valore di ImpostazioneValoreCPU(Impostazioni)
+			  FINE SE
+			FINCHE'(Esito==0)
+			FINE
+
+- Algoritmo per Controllo Scelta Impostazioni :
+	INPUT : Scelta, valore intero >=0 che indica la scelta effettuata nel menù 
+			delle impostazioni dall'utente
+	OUTPUT : Esito, valore intero >=0 e <=1 che indicherà l'esito del controllo della Scelta
+	PROCEDIMENTO : Assegnare a esito il valore 0
+			Se(Scelta!=1 && Scelta!=2)
+		       	 Allora Visualizzare Esito
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+		       FINE
+
+- Algoritmo per Richiesta Impostazioni :
+	INPUT : Impostazioni, tipo di dato sul quale verranno effettuate le operazioni previste
+			      in base alla scelta
+	OUTPUT: Scelta, valore intero >=0 che indicherà la scelta effettuata dall'utente
+	DATI DI LAVORO : Esito, valore intero >=0 o <=1 che indicherà l'esito del controllo
+	PROCEDIMENTO : Esegui
+			Assegnare a Esito il valore di ControlloSceltaImpostazioni(scelta)
+			 Se(Scelta==1)
+			  Allora Assegnare a Impostazioni il valore di ScritturaImpostazioniUtente(Impostazioni)
+			  FINE SE
+			 FINCHE'(Esito==0)
+			FINE
+
+- Algoritmo per StampaCampo :
+	INPUT : Impostazioni, tipo di dato dal quale prelevare le informazioni necessarie 
+			      per la stampa del campo
+		Righe, tipo di dato posizione che indica le righe totali del campo da gioco
+		Colonne, tipo di dato posizione che indica le colonne totali del campo da gioco
+	OUTPUT : Campo, campo da gioco visualizzato a schermo
+	DATI DI LAVORO : i, indice del ciclo
+	PROCEDIMENTO :
+			StampaNumeriSuperiori(Impostazioni,Colonne)
+			Assegnare a i il valore 0
+			MENTRE(i<Righe)
+			 StampaRigheSuperiori(colonne)
+			 StampaRigheCentrali(colonne)
+			 StampaRigheInferiori(colonne)
+			 Assegnare a i il valore di i+1
+			FINE MENTRE
+			FINE
+			
+- Algoritmo per Riempimento Campo :
+	INPUT : Tabella, tipo di dato campo nel quale inserire i valori interi 0
+		Righe, tipo di dato posizione che indica le righe totali del campo da gioco
+		Colonne, tipo di dato posizione che indica le colonne totali del campo da gioco
+	OUTPUT : Tabella, tipo di dato campo contenente in tutte le posizioni i valori 0
+	DATI DI LAVORO : i, valore intero >=0 indice del ciclo per le righe
+			 j, valore intero >=0 indice del ciclo per le colonne
+			 Valore, valore intero 0 da inserire nella posizione del campo
+	PROCEDIMENTO : Assegnare a i il valore 0
+		       MENTRE(i<Righe)
+			Assegnare a j il valore 0
+			 MENTRE(j<Colonne)
+			  Assegnare a Tabella il valore di ScritturaValoreCampo(Tabella,i,j,valore)
+			  Assegnare a j il valore j+1
+			 FINE MENTRE
+			 Assegnare a i il valore i+1
+			FINE MENTRE
+			FINE
+
+- Algoritmo per Turno :
+	INPUT : Tabella, tipo di dato campo da utilizzare per far effettuare la mossa al giocatore
+		Impostazioni, tipo di dato dal quale prelevare le informazioni necessarie per
+			      consentire ai giocatori di giocare tra loro
+	OUTPUT : Vittoria, valore intero >=0 o <=1 che indica la vittoria tra i giocatori presenti
+			   Restituirà -1 se il campo sarà al completo
+	DATI DI LAVORO : i, valore intero >=0 indice del ciclo 
+			 giocatori, valore intero >=2 e <=4 che indica quanti giocatori ci sono
+	PROCEDIMENTO : Assegnare a Vittoria il valore 0
+		       Assegnare a giocaotri il valore di LetturaGiocatori(Impostazioni)
+		       MENTRE(i<giocatori && Vittoria==0)
+			Allora Assegnare a  Vittoria il valore di Mossa(Tabella,Impostazioni,i)
+			Assegnare a i il valore di i+1
+			Se(i==Giocatori)
+			 Allora Assegnare a i il valore 0
+			FINE SE
+		       FINE MENTRE
+		       FINE
+		
+- Algoritmo per SceltaColonna : 
+	INPUT : Impostazioni, tipo di dato dal quale prelevare le informazioni necessarie per
+			      effettuare la scelta della colonna
+		Giocatori, valore intero >=2 e <=4 che indica quanti giocatori sono presenti
+			   in partita
+		Colonna, tipo di dato posizione, intero <Colonne che indica in quale colonna inserire il valore
+	OUTPUT : Colonna, tipo di dato posizione, intero che indica la posizione nella quale il giocatore inserirà
+			  la pedina
+	DATI DI LAVORO : Esito, valore intero >=0 o <=1 che indicherà l'esito del controllo della 
+			        colonna selezionata
+			 ColonneTotali, tipo di dato posizione che indica quante colonne totali sono
+					presenti nel campo
+	PROCEDIMENTO : ESEGUI
+			Assegnare a Esito il valore di ControlloSceltaColonna(Colonna,ColonneTotali)
+		       FINCHE'(Esito==0)
+		       FINE CICLO
+		       Assegnare a Colonna il valore di Colonna-1
+		       Visualizzare Colonna
+			FINE
+	
+- Algoritmo per Controllo Scelta Colonna:
+	INPUT : Colonna, tipo di dato posizione, intero >0 e <ColonneTotali
+			 che indica la scelta effettuata dall'
+			 utente riguardo alla colonna nella quale inserire il valore
+		ColonneTotali, tipo di dato posizione, intero >0 che indica il numero massimo di 
+				colonne presenti nel campo da gioco
+	OUTPUT : Esito, valore intero >=0 e <=1 che indicherà l'esito del controllo della Scelta
+	PROCEDIMENTO : Assegnare a esito il valore 0
+			Se(Colonna>ColonneTotali OR colonna==0)
+		       	 Allora Visualizzare Esito
+			 Altrimenti Assegnare a Esito il valore 1
+				    Visualizzare Esito
+			FINE SE
+		       FINE
+
+- Algoritmo per Inserisci Pedina : 
+	INPUT : Tabella, tipo di dato campo con il quale scrivere il valore nella posizione desiderata
+		Righe, tipo di dato posizione <N che indica le righe totali presenti nel campo
+			da gioco
+		Colonna, tipo di dato posizione che indica la colonna scelta dall'utente
+		Pedina, intero >=2 o <=4 che indica la pedina del giocatore corrente
+	OUTPUT : Righe, tipo di dato posizione che indica la riga nella quale è possibile
+			inserire la pedina, Restituirà 0 se la posizione è libera, e -1
+			se l'intera riga è occupata
+	PROCEDIMENTO :
+	SE(Righe>=0)
+	 Allora Assegnare a Valore il valore di LetturaValore(Tabella,Righe,Colonna)
+	 SE(Valore==0)
+	  Allora Assegnare a Tabella il valore di ScritturaValoreCampo(Tabella,Righe,Colonna,Pedina)
+	  Visualizzare Righe
+	  Altrimenti Visualizzare il valore di InserisciPedina(Tabella,Righe-1,Colonna,Pedina)
+	 FINE SE
+	 Altrimenti Visualizzare il valore di righe -1
+	FINE SE
+	FINE
+
+- Algoritmo per ControlloCampo :
+	INPUT : Impostazioni, tipo di dato dal quale prelevare le informazioni necessarie
+		Tabella,  tipo di dato campo con il quale controllare la situazione del campo
+	OUTPUT : Pareggio, intero >=0 o <=1 che indica se la partità finirà in pareggio o meno
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 valore, valore intero >=0 che leggerà il valore del campo nella posizione
+				 specificata
+			 Colonne, tipo di dato posizione che indica il numero M totale di colonne
+				 presenti nel campo da gioco
+	PROCEDIMENTO : Assegnare a Pareggio il valore 0
+		       Assegnare a i il valore 0
+		       MENTRE(i<Colonne)
+		        Assegnare a Valore il valore di LetturaValoreCampo(Tabella,0,i)
+			 SE(valore!=0)
+			  Assegnare a pareggio il valore di pareggio +1
+			 FINE SE
+			Assegnare a i il valore di i+1
+		       FINE MENTRE
+		       SE(pareggio==Colonne)
+			Allora Assegnare a Pareggio il valore 1
+			Altrimenti Assegnare a Pareggio il valore 0
+		       FINE SE
+			Visualizzare Pareggio
+
+- Algoritmo per Controllo Vittoria Riga : 
+	INPUT : Impostazioni, tipo di dato impostazioni dal quale prelevare le informazioni
+			      necessarie del campo
+		Colonna, tipo di dato posizione che indica la colonna scelta dall'utente
+		Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+		Pedina, valore intero >=2 o <=4 che indica la pedina del giocatore corrente
+	OUTPUT : Vittoria, Valore intero >=0 o <=1 che indica con 0 se non c'è stata nessuna vittoria
+			   e con 1 se invece la vittoria è presente
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 Righe, tipo di dato posizione che indica le righe totali presenti 
+				nel campo da gioco
+			 Valore1, valore intero >=0 che indica il valore presente nella prima 
+				  posizione
+			 Valore2, valore intero >=0 che indica il valore presente nella seconda
+				  posizione
+			 Valore3, valore intero >=0 che indica il valore presente nella terza
+				  posizione
+			 Valore4, valore intero >=0 che indica il valore presente nella quarta 
+				  posizione
+	PROCEDIMENTO : Assegnare a Vittoria il valore 0
+		       Assegnare a i il valore 0
+		       MENTRE(i<Righe AND Vittoria!=1)
+			Assegnare a Valore1 il valore di LetturaValoreCampo(Tabella,i,colonna)
+			Assegnare a Valore2 il valore 0
+			Assegnare a Valore3 il valore 0
+			Assegnare a Valore4 il valore 0
+			SE(Righe-1>=i)
+			 Allora assegnare a Valore2 il valore di LetturaValoreCampo(Tabella,i+1,colonna)
+			FINE SE
+			SE(Righe-2>=i)
+			 Allora assegnare a Valore3 il valore di LetturaValoreCampo(Tabella,i+2,colonna)
+			FINE SE
+			SE(Righe-3>=i)
+			 Allora assegnare a Valore4 il valore di LetturaValoreCampo(Tabella,i+3,colonna)
+			FINE SE
+			SE(Pedina==Valore1 AND pedina==Valore2)
+			 Allora SE(Pedina==Valore3 AND pedina==Valore4)
+				 Allora
+				  Assegnare a Vittoria il valore 1
+				 FINE SE
+			 FINE SE
+			 Assegnare a i il valore i+1
+			 FINE CICLO
+			 FINE
+
+- Algoritmo per Controllo Vittoria Colonna : 
+	INPUT : Impostazioni, tipo di dato impostazioni dal quale prelevare le informazioni
+			      necessarie del campo
+		Riga, tipo di dato posizione che indica la riga 
+		Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+		Pedina, valore intero >=2 o <=4 che indica la pedina del giocatore corrente
+	OUTPUT : Vittoria, Valore intero >=0 o <=1 che indica con 0 se non c'è stata nessuna vittoria
+			   e con 1 se invece la vittoria è presente
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 Colonne, tipo di dato posizione che indica le colonne totali presenti 
+				  nel campo da gioco
+			 Valore1, valore intero >=0 che indica il valore presente nella prima 
+				  posizione
+			 Valore2, valore intero >=0 che indica il valore presente nella seconda
+				  posizione
+			 Valore3, valore intero >=0 che indica il valore presente nella terza
+				  posizione
+			 Valore4, valore intero >=0 che indica il valore presente nella quarta 
+				  posizione
+	PROCEDIMENTO : Assegnare a Vittoria il valore 0
+		       Assegnare a i il valore 0
+		       MENTRE(i<Colonne AND Vittoria!=1)
+			Assegnare a Valore1 il valore di LetturaValoreCampo(Tabella,riga,i)
+			Assegnare a Valore2 il valore 0
+			Assegnare a Valore3 il valore 0
+			Assegnare a Valore4 il valore 0
+			SE(Colonne-1>=i)
+			 Allora assegnare a Valore2 il valore di LetturaValoreCampo(Tabella,riga+1,i)
+			FINE SE
+			SE(Colonne-2>=i)
+			 Allora assegnare a Valore3 il valore di LetturaValoreCampo(Tabella,riga+2,i)
+			FINE SE
+			SE(Colonne-3>=i)
+			 Allora assegnare a Valore4 il valore di LetturaValoreCampo(Tabella,riga+3,i)
+			FINE SE
+			SE(Pedina==Valore1 AND pedina==Valore2)
+			 Allora SE(Pedina==Valore3 AND pedina==Valore4)
+				 Allora
+				  Assegnare a Vittoria il valore 1
+				 FINE SE
+			 FINE SE
+			 Assegnare a i il valore i+1
+			 FINE CICLO
+			 FINE
+
+- Algoritmo per Controllo Vittoria Diagonale Principale : 
+	INPUT : Impostazioni, tipo di dato impostazioni dal quale prelevare le informazioni
+			      necessarie del campo
+		Riga, tipo di dato posizione che indica la riga
+		Colonna, tipo di dato posizione che indica la colonna 
+		Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+	OUTPUT : Vittoria, Valore intero >=0 o <=1 che indica con 0 se non c'è stata nessuna vittoria
+			   e con 1 se invece la vittoria è presente
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 Righe, tipo di dato posizione che indica le righe totali presenti 
+				  nel campo da gioco
+			 Valore1, valore intero >=0 che indica il valore presente nella prima 
+				  posizione
+			 Valore2, valore intero >=0 che indica il valore presente nella seconda
+				  posizione
+			 Valore3, valore intero >=0 che indica il valore presente nella terza
+				  posizione
+			 Valore4, valore intero >=0 che indica il valore presente nella quarta 
+				  posizione
+	PROCEDIMENTO : SE(Riga!=righe AND Riga!=Righe-1)
+			Allora SE(Riga!=Righe-2)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga+3,colonna-3)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga+2,colonna-2)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga+1,colonna-1)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+			
+			SE(Riga!=0 AND Riga!=Righe)
+			Allora SE(Riga!=Righe-1)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga+2,colonna-2)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga+1,colonna-1)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga-1,colonna+1)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+
+			SE(Riga!=0 AND Riga!=1)
+			Allora SE(Riga!=Righe)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga+1,colonna-1)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga-1,colonna+1)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga-2,colonna+2)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+			
+			SE(Riga!=0 AND Riga!=1)
+			Allora SE(Riga!=2)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga-1,colonna+1)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga-2,colonna+2)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga-3,colonna+3)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+
+- Algoritmo per Controllo Vittoria Diagonale Secondaria : 
+	INPUT : Impostazioni, tipo di dato impostazioni dal quale prelevare le informazioni
+			      necessarie del campo
+		Riga, tipo di dato posizione che indica la riga
+		Colonna, tipo di dato posizione che indica la colonna 
+		Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+	OUTPUT : Vittoria, Valore intero >=0 o <=1 che indica con 0 se non c'è stata nessuna vittoria
+			   e con 1 se invece la vittoria è presente
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 Righe,  tipo di dato posizione che indica le righe totali presenti 
+				  nel campo da gioco
+			 Valore1, valore intero >=0 che indica il valore presente nella prima 
+				  posizione
+			 Valore2, valore intero >=0 che indica il valore presente nella seconda
+				  posizione
+			 Valore3, valore intero >=0 che indica il valore presente nella terza
+				  posizione
+			 Valore4, valore intero >=0 che indica il valore presente nella quarta 
+				  posizione
+	PROCEDIMENTO : SE(Riga!=righe AND Riga!=Righe-1)
+			Allora SE(Riga!=Righe-2)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga+1,colonna+1)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga+2,colonna+2)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga+3,colonna+3)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+			
+			SE(Riga!=0 AND Riga!=Righe)
+			Allora SE(Riga!=Righe-1)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga-1,colonna-1)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga+1,colonna+1)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga-2,colonna+2)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+
+			SE(Riga!=0 AND Riga!=1)
+			Allora SE(Riga!=Righe)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga-2,colonna-2)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga-1,colonna-1)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga+1,colonna+1)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+			
+			SE(Riga!=0 AND Riga!=1)
+			Allora SE(Riga!=2)			
+				Allora Assegnare a Valore 1 il valore di LetturaValoreCampo(tabella,riga,colonna)
+				Assegnare a Valore 2 il valore di LetturaValoreCampo(tabella,riga-1,colonna+1)
+				Assegnare a Valore 3 il valore di LetturaValoreCampo(tabella,riga-2,colonna+2)
+				Assegnare a Valore 4 il valore di LetturaValoreCampo(tabella,riga-3,colonna+3)
+				 SE(valore1=Valore2 AND Valore2=valore3)
+				  Allora SE(Valore3=Valore4)
+				           Allora assegnare a Vittoria il valore di Vittoria+1
+					 FINE SE
+				 FINE SE
+		        FINE SE
+
+- Algoritmo per Controllo Vittoria :
+	INPUT : INPUT : Impostazioni, tipo di dato impostazioni dal quale prelevare le informazioni
+			      	      necessarie del campo
+		Riga, tipo di dato posizione che indica la riga
+		Colonna, tipo di dato posizione che indica la colonna 
+		Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+	OUTPUT : Vittoria, Valore intero >=0 che indica con 0 se non c'è stata nessuna vittoria,
+			   con 1 se la vittoria è presente e con -1 se la partita è finita in 
+			   pareggio
+	DATI DI LAVORO : Pareggio, valore intero >=0 e <=1 che indica se c'è stato il pareggio
+			 VittoriaRiga, valore intero >=0 e <=1 che indica se c'è stata la vittoria
+					su una riga
+			 VittoriaColonna, valore intero >=0 e <=1 che indica se c'è stata la vittoria
+					su una colonna
+			 VittoriaDiagonalePrincipale, valore intero >=0 e <=1 che indica se 
+						     c'è stata la vittoria sulla diagonale principale
+			 VittoriaDiagonaleSecondaria, valore intero >=0 e <=1 che indica se c'è
+						      stata la vittoria sulla diagonale secondaria
+	PROCEDIMENTO : Assegnare a Pareggio il valore di ControlloCampo(Impostazioni, Tabella)
+		       SE(Pareggio==1)
+			Allora Assegnare a Vittoria il valore -1
+			Altrimenti
+			Assegnare a VittoriaRiga il valore di ControlloVittoriaRiga(Impostazioni,riga, tabella, pedina)
+		        Assegnare a VittoriaColonna il valore di ControlloVittoriaColonna(Impostazioni,colonna,tabella,pedina)
+			Assegnare a VittoriaDiagonalePrincipale il valore di ControlloVittoriaDiagonalePrincipale(Impostazioni, riga, colonna, tabella)
+			Assegnare a VittoriaDiagonaleSecondaria il valore di ControlloVittoriaDiagonaleSecondaria(Impostazioni, riga, colonna, tabella)
+
+- Algoritmo per Gioco :
+	INPUT : Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+		Impostazioni, tipo di dato dal quale prelevare le informazioni principali
+	OUTPUT : Vittoria, Valore >=0 o <=1 che indica con 1 se la partita è vinta, e restituisce
+		           invece -1 se la partita si è conclusa in pareggio
+	PROCEDIMENTO : SE(LetturaValoreCPU(Impostazioni)==0)
+			Allora Assegnare a Vittoria il valore di Turno(Tabela, Impostazioni)
+			Altrimenti Assegnare a Vittoria il valore di TurnoGiocatoreCPU(Tabella,Impostazioni)
+		       FINE SE
+			Visualizzare Vittoria
+		       FINE
+- Algoritmo per Mossa :
+	INPUT : Tabella, tipo di dato campo con il quale controllare la situazione del campo da
+			 gioco
+		Impostazioni, tipo di dato dal quale prelevare le informazioni principali
+		i, Valore intero >=2 o <=4 che indica il giocatore corrente
+	OUTPUT : Vittoria, Valore >=0 o <=1 che indica con 1 se la partita è vinta, e restituisce
+		           invece -1 se la partita si è conclusa in pareggio
+	DATI DI LAVORO : Pedina, pedina del giocatore corrente
+			 Riga, valore intero >=4 e <=7 che indica in che riga inserire la pedina
+			       del giocatore, restituirà -1 se la riga è completamente piena
+	PROCEDIMENTO :  Assegnare a Vittoria il valore 0
+			Assegnare a Pedina il valore di LetturaPedina(Impostazioni,i)
+			Assegnare a colonna il valore di SceltaColonna(imp,i+1)
+			Assegnare a Riga il valore di InserisciPedina(tabella,riga-1,colonna,pedina)
+			Se(riga!=-1)
+			 Allora Assegnare a Vittoria il valore di ControlloVittoria(Impostazioni,riga,colonna,Tabella,Pedina)
+			  	Visualizzare Vittoria
+			 Altrimenti Visualizzare Vittoria
+			FINE SE
+			FINE
+			
+- Algoritmo per Turno tra Giocatore e CPU:
+	INPUT : Tabella, tipo di dato campo con il quale controllare la situazione del campo da gioco
+		Impostazioni, tipo di dato attraverso il quale prelevare le informazioni necessarie
+	OUTPUT : Vittoria, valore intero <=1 che indicare se la partita è stata persa o vinta, oppure
+		           è terminata in pareggio, quest'ultimo caso viene indicato con il valore -1
+	DATI DI LAVORO : i, valore intero >=0 indice del ciclo	
+			 Giocatori, valore intero <=2 che indica il numero di giocatori presenti nel gioco
+	PROCEDIMENTO : Assegnare a Vittoria il valore 0
+		       Assegnare a Giocatori il valore di LetturaGiocatori(Impostazioni)
+		       Assegnare a i il valore 0
+		       MENTRE(i<Giocatori AND Vittoria==0)
+			SE(i==1)
+			 Allora Assegnare a Vittoria il valore di MossaCPU(Tabella,Impostazioni,i)
+			 Altrimenti Assegnare a Vittora il valore di Mossa(Tabella, Impostazioni,i)
+			FINE SE
+			Assegnare a i il valore di i+1
+			SE(i==Giocatori)
+			 Allora Assegnare a i il valore 0
+			FINE SE
+		        FINE MENTRE
+			FINE
+
+- Algoritmo per Scelta Colonna CPU :
+	INPUT : Tabella, dato di tipo campo necessario per controllare la situazione attuale
+			 del campo
+		Impostazioni, dato di tipo impostazioni dal quale prelevare le informazioni necessarie
+				queli numero di colonne 
+		Righe, dato di tipo posizione che indica il numero totale delle righe presenti nel
+			campo da gioco
+		Giocatore, valore intero >=0 o <=1 che indica il numero del giocatore corrispondente
+		Pedina, valore intero >=2 o <=4 che indica la pedina corrispondente del giocatore
+	OUTPUT : Colonna, tipo di dato posizione che indica la colonna nella quale la CPU vorrà inserire
+			 la propria pedina
+	DATI DI LAVORO : i, valore intero >=0, indice del ciclo
+			 Valore1, primo valore del campo	
+			 Valore2, secondo valore del campo
+			 Valore3, terzo valore del campo
+			 ColonneTotali, valore intero >=4 e <=15 che indica il numero di colonne del
+					campo da gioco
+	PROCEDIMENTO : Assegnare a ColonneTotali il valore di LetturaColonne(Impostazioni)
+		       Assegnare a Colonna il valore 0
+		       Assegnare a i il valore 0
+		       MENTRE(i<ColonneTotali AND Colonna==0)
+			Assegnare a Valore1 il valore di LetturaValoreCAmpo(Tabella,Righe,i)
+			Assegnare a Valore2 il valore di -1
+			Assegnare a Valore3 il valore di -1
+			SE(ColonneTotali-1>=i AND Valore1!=0)
+			 Allora SE(Valore1!=Pedina)
+				 Allora
+				  Assegnare a Valore2 il valore di LetturaValoreCampo(Tabella,Righe,i+1)
+				FINE SE
+			FINE SE
+			SE(ColonneTotali-2>=i AND Valore2!=0)
+			 Allora SE(Valore2!=Pedina)
+				 Allora
+				  Assegnare a Valore3 il valore di LetturaValoreCampo(Tabella,Righe,i+2)
+				FINE SE
+			FINE SE
+			SE(Valore1==Valore2 AND Valore2==Valore3)
+			 Allora SE(LetturaValoreCampo(Tabella,righe-1,i+3)==0)
+				 Allora Assegnare a Colonna il valore di Colonna+4
+				FINE SE
+			FINE SE
+			Assegnare a i il valore di i+1	
+			FINE MENTRE
+			SE (Colonna==0)
+			 Allora Assegnare a Colonna il valore di Rand()%colonneTotali
+			FINE SE
+			Visualizzare Colonna-1
+			FINE
+
+
+- Algoritmo per Messaggio Finale : 
+	INPUT : Vittoria, valore intero <=1 che indica se la partita è stata vinta con il valore 1
+			  oppure se si è conclusa in pareggio,
+			  quest'ultimo caso viene indicato con il valore -1
+	OUTPUT : Messaggio, Messaggio che indica la vittoria di uno dei giocatori o il pareggio della
+			    partita
+	PROCEDIMENTO : SE(Vittoria>0)
+			Allora Visualizzare Vittoria()
+			Altrimenti Visualizzare Pareggio()
+		       FINE SE
+		       FINE
